@@ -26,7 +26,7 @@ root {
   background: radial-gradient(ellipse at 85% 38%, #FEF3C7 0%, transparent 42%), var(--background-color);
 }
 .hero-section .row > * { min-width: 0; }
-.availability { display: inline-flex; align-items: center; gap: 9px; padding: 10px 14px; border-radius: 30px; background: #FEF3C7; color: var(--navy); font-size: 13px; font-weight: 800; letter-spacing: 1px; }
+.availability { display: inline-flex; align-items: center; gap: 9px;color:#000000; padding: 10px 14px; border-radius: 30px; background: #FEF3C7; color: var(--navy); font-size: 13px; font-weight: 800; letter-spacing: 1px; }
 .status-dot { width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: #43bd8b; }
 .eyebrow { color: #B77908; font-size: 13px; font-weight: 800; letter-spacing: 2px; }
 .hero-content > .eyebrow { margin: 28px 0 12px; }
