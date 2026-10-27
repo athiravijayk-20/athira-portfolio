@@ -250,3 +250,288 @@ root {
   text-decoration: underline;
 }
 
+
+/* Floating stars animation */
+.profile-visual {
+  position: relative;
+  isolation: isolate;
+}
+
+.profile-visual::before,
+.profile-visual::after {
+  position: absolute;
+  z-index: 2;
+  color: #f5b82e;
+  pointer-events: none;
+  animation: floatingStar 3s ease-in-out infinite;
+}
+
+.profile-visual::before {
+  content: "✦";
+  top: 8%;
+  left: 7%;
+  font-size: 34px;
+  animation-delay: 0s;
+}
+
+.profile-visual::after {
+  content: "✧";
+  right: 7%;
+  bottom: 16%;
+  font-size: 42px;
+  animation-delay: 1s;
+}
+
+@keyframes floatingStar {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translateY(-18px) rotate(18deg) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Small decorative stars across the page */
+.hero-section {
+  position: relative;
+}
+
+.hero-section::after {
+  content: "✧  ·  ✦";
+  position: absolute;
+  top: 18%;
+  right: 5%;
+  color: #f5b82e;
+  font-size: 23px;
+  letter-spacing: 14px;
+  pointer-events: none;
+  animation: sparkle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes sparkle {
+  from {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+}
+
+/* Floating animation for your profile cards */
+.floating-top {
+  animation: floatCard 3.5s ease-in-out infinite;
+}
+
+.floating-bottom {
+  animation: floatCard 4s ease-in-out infinite reverse;
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .profile-visual::before,
+  .profile-visual::after,
+  .hero-section::after,
+  .floating-top,
+  .floating-bottom {
+    animation: none;
+  }
+}
+
+/* ===== WHOLE PORTFOLIO STAR BACKGROUND ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0b1020;
+  color: #f1f5f9;
+}
+
+/* Main portfolio background */
+.portfolio {
+  --star-gold: #f5c451;
+  --star-white: #ffffff;
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: clip;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(75, 63, 130, 0.22), transparent 40%),
+    radial-gradient(ellipse at 85% 45%, rgba(20, 100, 130, 0.15), transparent 38%),
+    #0b1020;
+  color: #f1f5f9;
+}
+
+/* Keep the stars behind all page content */
+.portfolio::before,
+.portfolio::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-repeat: repeat;
+}
+
+/* Tiny stars */
+.portfolio::before {
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #ffffff 98%, transparent),
+    radial-gradient(1px 1px at 90px 110px, #f5c451 98%, transparent),
+    radial-gradient(2px 2px at 170px 70px, #ffffff 98%, transparent),
+    radial-gradient(1px 1px at 230px 160px, #a5c8ff 98%, transparent),
+    radial-gradient(2px 2px at 300px 40px, #f5c451 98%, transparent);
+  background-size: 340px 200px;
+  animation: starsDrift 45s linear infinite;
+  opacity: 0.7;
+}
+
+/* Larger sparkling stars */
+.portfolio::after {
+  background-image:
+    radial-gradient(3px 3px at 60px 80px, #f5c451 98%, transparent),
+    radial-gradient(2px 2px at 200px 180px, #ffffff 98%, transparent),
+    radial-gradient(2px 2px at 320px 100px, #a5c8ff 98%, transparent);
+  background-size: 400px 260px;
+  animation: starsTwinkle 4s ease-in-out infinite alternate;
+  opacity: 0.6;
+}
+
+@keyframes starsDrift {
+  from { background-position: 0 0; }
+  to { background-position: 340px 200px; }
+}
+
+@keyframes starsTwinkle {
+  from { opacity: 0.25; }
+  to { opacity: 0.8; }
+}
+
+/* Dark, translucent sections */
+.hero-section,
+.section-padding,
+.experience-section,
+.skills-section,
+.contact-section {
+  background: transparent;
+}
+
+/* Navigation */
+.portfolio-nav {
+  background: rgba(11, 16, 32, 0.92) !important;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.portfolio-nav .nav-link,
+.portfolio-nav .brand {
+  color: #f1f5f9;
+}
+
+.portfolio-nav .nav-link:hover {
+  color: #f5c451;
+}
+
+/* Text colors */
+.portfolio .hero-title,
+.portfolio .section-heading h2,
+.portfolio .about-title,
+.portfolio .project-content h3,
+.portfolio .timeline-item h3,
+.portfolio .contact-section h2 {
+  color: #f8fafc;
+}
+
+.portfolio .body-copy,
+.portfolio .hero-description,
+.portfolio .contact-copy {
+  color: #c0c9d8;
+}
+
+.portfolio .eyebrow,
+.portfolio .section-heading h2 span,
+.portfolio .hero-title span {
+  color: #f5c451;
+}
+
+/* Cards */
+.portfolio .skill-card,
+.portfolio .project-card,
+.portfolio .timeline-item,
+.portfolio .floating-card {
+  background: rgba(22, 30, 51, 0.88);
+  color: #f1f5f9;
+  border-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.portfolio .skill-card strong,
+.portfolio .project-card h3,
+.portfolio .floating-card strong {
+  color: #f8fafc;
+}
+
+.portfolio .skill-number,
+.portfolio .timeline-date,
+.portfolio .timeline-company {
+  color: #f5c451;
+}
+
+.portfolio .project-tags span {
+  background: rgba(245, 196, 81, 0.12);
+  color: #f8d987;
+}
+
+.portfolio .project-links a,
+.portfolio .contact-links a,
+.portfolio .text-link {
+  color: #f5c451;
+}
+
+/* Technology strip */
+.portfolio .tech-strip {
+  background: rgba(255, 255, 255, 0.035);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.portfolio .tech-strip p,
+.portfolio .tech-items span {
+  color: #e2e8f0;
+}
+
+/* About illustration and project artwork */
+.portfolio .about-art,
+.portfolio .project-art {
+  background: linear-gradient(135deg, #18233e, #29355a);
+  color: #f5c451;
+}
+
+/* Footer */
+.portfolio .footer {
+  background: rgba(3, 7, 18, 0.75);
+  color: #c0c9d8;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Starry background stays static for reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio::before,
+  .portfolio::after {
+    animation: none;
+  }
+}

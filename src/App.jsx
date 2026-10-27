@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const skills = [
   "PHP",
@@ -128,6 +128,35 @@ function App() {
     ["Experience", "experience"],
     ["Contact", "contact"],
   ];
+  useEffect(() => {
+  const elements = document.querySelectorAll(
+    ".hero-content, .profile-visual, .tech-strip, " +
+    "#about .about-art, #about .col-md-8, " +
+    ".skill-card, .project-card, .timeline-item, " +
+    ".contact-section .container"
+  );
+
+  elements.forEach((element, index) => {
+    element.classList.add("reveal-item");
+    element.style.setProperty("--reveal-delay", `${(index % 4) * 100}ms`);
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  elements.forEach((element) => observer.observe(element));
+
+  return () => observer.disconnect();
+}, []);
 
   return (
     <div className="portfolio">
