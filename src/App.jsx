@@ -242,6 +242,13 @@ function App() {
                   <a className="btn btn-outline-custom" href="#contact">
                     Contact Me
                   </a>
+                   <a
+    className="btn btn-outline-custom resume-button"
+    href="/ATHIRA_VIJAY_K_latest.pdf"
+    download="ATHIRA_VIJAY_K_latest.pdf"
+  >
+    ↓ Download Resume
+  </a>
                 </div>
 
                 <div className="hero-meta">
